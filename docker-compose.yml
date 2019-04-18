@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+    mongo:
+        image: mongo
+        ports:
+            - "27017:27017"
+        volumes:
+            - ./data:/data/db
+    api:
+        image: node
+        volumes:
+            - ./api:/opt/api
+        ports:
+            - "3000:3000"
+        environment:
+            - MONGO_DB_URI=mongodb://mongo:27017/
+        depends_on:
+            - mongo
+
