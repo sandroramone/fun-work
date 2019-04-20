@@ -1,4 +1,4 @@
-const { model } = require('mongoose')
+const { model, Schema } = require('mongoose')
 
 /**
  * @memberof module:models
@@ -11,9 +11,7 @@ const { model } = require('mongoose')
  * @property {date} birthdate Data de nascimento do usuário
  * @property {string} phone Número de telefone do usuário
  */
-// const schema = new Schema()
-
-module.exports = model('proposal', {
+const schema = new Schema({
     productId: { type: Number, required: true },
     name: { type: String, require: true },
     email: { type: String },
@@ -21,3 +19,9 @@ module.exports = model('proposal', {
     birthdate: { type: Date, required: true },
     phone: { type: String }
 })
+
+const Proposal = model('proposal', schema)
+
+Proposal.events.on('error', err => err = err.message)
+
+module.exports = Proposal

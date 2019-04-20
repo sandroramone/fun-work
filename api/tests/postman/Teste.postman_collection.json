@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "cf11b927-f5bf-4bab-b0ac-c1c45b635e17",
+		"name": "Teste",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e15b0fd2-733b-49d6-afed-15535c744eae",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productId\": 1,\n    \"name\": \"sandro\",\n    \"email\": \"sandro@email.com\",\n    \"cpf\": \"22978552890\",\n    \"birthdate\": \"02/12/2988\",\n    \"phone\": \"18981452413\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/final",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"final"
+					]
+				},
+				"description": "salvar objeto no banco de dados usando varias requests"
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:3000/api/final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c05f2b83-76a2-414e-80a3-8abdc5ff08ad",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/final",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"final"
+					]
+				},
+				"description": "Teste2"
+			},
+			"response": []
+		}
+	]
+}

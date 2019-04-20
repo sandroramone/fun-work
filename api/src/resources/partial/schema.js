@@ -20,4 +20,5 @@ const schema = new Schema({
     phone: { type: String }
 })
 
+
 module.exports = model('piece', schema)
