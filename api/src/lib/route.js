@@ -29,6 +29,7 @@ const mid = {
  */
 const createRoute = (controller, middlewares = mid) => {
     const router = new Router()
+    router['controller'] = controller
 
     router
         .route('/')

@@ -18,10 +18,12 @@ const schema = new Schema({
     cpf: { type: String },
     birthdate: { type: Date, required: true },
     phone: { type: String }
-})
+}, { timestamps: {} })
 
+/**
+ * Proposal is a mongoose model
+ * @memberof module:resources/final
+ */
 const Proposal = model('proposal', schema)
-
-Proposal.events.on('error', err => err = err.message)
 
 module.exports = Proposal

@@ -10,8 +10,8 @@ class factoryController extends Controller { }
  * @type {Object}
  * @memberof module:lib
  * @property {mongoose.Model!} schema - is a instance of mongoose model
- * @property {controller=} customController - is an instance of the controller
- * @property {dao=} customDao - is an instance of the dao
+ * @property {controller} [customController] - is an instance of the controller
+ * @property {dao} [customDao] - is an instance of the dao
  */
 
 /**

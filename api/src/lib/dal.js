@@ -98,7 +98,7 @@ class Dal {
      */
     update(query, body) {
         return this.Schema
-            .update(query, body)
+            .updateOne(query, body)
             .exec()
     }
 

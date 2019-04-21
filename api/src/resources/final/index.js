@@ -1,9 +1,13 @@
+/** @module resources/final */
 const { Factory } = require('../../lib')
-const middlewares = require('./middlewares')
 const schema = require('./schema')
+const middlewares = require('./middlewares')(schema)
 
 const config = {
     schema
 }
 
+/**
+ * Export resource final
+ */
 module.exports = Factory(config, middlewares)

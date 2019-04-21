@@ -28,7 +28,10 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Dal<span class="signature">(Schema)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="module-lib.html">lib</a>.</span>Dal<span class="signature">(Schema)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Dal is representing actions in database</div>
         
     
 </header>
@@ -38,6 +41,8 @@
     
         
 
+    
+    <h2>Constructor</h2>
     
 
     
@@ -139,7 +144,7 @@ the calls to the database</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line11">line 11</a>
+        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -193,12 +198,17 @@ the calls to the database</td>
     
 
     
-    <h4 class="name" id="count"><span class="type-signature"></span>count<span class="signature">(query)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="count"><span class="type-signature"></span>count<span class="signature">(query)</span><span class="type-signature"> &rarr; {Number}</span></h4>
     
 
     
 
 
+
+<div class="description">
+    count is a method that returns the amount of records in
+the database filtered by the query entered through the query
+</div>
 
 
 
@@ -291,7 +301,7 @@ to be used to filter the data</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line31">line 31</a>
+        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line33">line 33</a>
     </li></ul></dd>
     
 
@@ -314,6 +324,28 @@ to be used to filter the data</td>
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - a number of count result
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -483,12 +515,17 @@ database using the schema</td>
     
 
     
-    <h4 class="name" id="find"><span class="type-signature">(async) </span>find<span class="signature">(query)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="find"><span class="type-signature">(async) </span>find<span class="signature">(query)</span><span class="type-signature"> &rarr; {Array}</span></h4>
     
 
     
 
 
+
+<div class="description">
+    find is a method that uses the schema to fetch a list of data filtered
+by the query entered in the query
+</div>
 
 
 
@@ -581,7 +618,7 @@ to be used to filter the data</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line40">line 40</a>
+        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line44">line 44</a>
     </li></ul></dd>
     
 
@@ -604,6 +641,28 @@ to be used to filter the data</td>
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    an array of found items that meet the query's requirements
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -615,12 +674,17 @@ to be used to filter the data</td>
     
 
     
-    <h4 class="name" id="findById"><span class="type-signature"></span>findById<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="findById"><span class="type-signature"></span>findById<span class="signature">(id)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
 
 
+
+<div class="description">
+    findById is a method that uses the schema to fetch
+the item that has the id entered in the query
+</div>
 
 
 
@@ -671,7 +735,7 @@ to be used to filter the data</td>
 
             
 
-            <td class="description last">-</td>
+            <td class="description last">is the identifier of the resource you want to find</td>
         </tr>
 
     
@@ -712,7 +776,7 @@ to be used to filter the data</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line75">line 75</a>
+        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line84">line 84</a>
     </li></ul></dd>
     
 
@@ -735,6 +799,28 @@ to be used to filter the data</td>
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the found item that meets the id
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -746,12 +832,17 @@ to be used to filter the data</td>
     
 
     
-    <h4 class="name" id="findOne"><span class="type-signature"></span>findOne<span class="signature">(query)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="findOne"><span class="type-signature"></span>findOne<span class="signature">(query)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
 
 
+
+<div class="description">
+    findOne is a method that uses the schema to fetch the first
+item that satisfies the query requirements
+</div>
 
 
 
@@ -844,7 +935,7 @@ to be used to filter the data</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line65">line 65</a>
+        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line72">line 72</a>
     </li></ul></dd>
     
 
@@ -867,6 +958,29 @@ to be used to filter the data</td>
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - the first item found that meets
+the query requirements
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -885,6 +999,11 @@ to be used to filter the data</td>
 
 
 
+<div class="description">
+    remove is a method that excludes a record
+in the database that matches the query filters
+</div>
+
 
 
 
@@ -976,7 +1095,7 @@ to be used to filter the data</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line98">line 98</a>
+        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line111">line 111</a>
     </li></ul></dd>
     
 
@@ -1010,12 +1129,17 @@ to be used to filter the data</td>
     
 
     
-    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(query, body)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(query, body)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
 
 
+
+<div class="description">
+    update is a method that updates the information in the
+ registry in the database
+</div>
 
 
 
@@ -1080,7 +1204,7 @@ to be used to filter the data</td>
             <td class="type">
             
                 
-<span class="param-type">*</span>
+<span class="param-type">Object</span>
 
 
             
@@ -1090,7 +1214,8 @@ to be used to filter the data</td>
 
             
 
-            <td class="description last"></td>
+            <td class="description last">- are the data to be updated
+in the database using the schema</td>
         </tr>
 
     
@@ -1131,7 +1256,7 @@ to be used to filter the data</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line87">line 87</a>
+        <a href="lib_dal.js.html">lib/dal.js</a>, <a href="lib_dal.js.html#line99">line 99</a>
     </li></ul></dd>
     
 
@@ -1154,6 +1279,28 @@ to be used to filter the data</td>
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - contains found items(n), updated items(nModified), and ok if all normal occurred
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -1175,13 +1322,13 @@ to be used to filter the data</td>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-lib.html">lib</a></li></ul><h3>Classes</h3><ul><li><a href="Dal.html">Dal</a></li><li><a href="module-lib.Controller.html">Controller</a></li><li><a href="module-lib.Dal.html">Dal</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-database.html">database</a></li><li><a href="module-lib.html">lib</a></li><li><a href="module-resources.html">resources</a></li><li><a href="module-resources_final.html">resources/final</a></li><li><a href="module-resources_partial.html">resources/partial</a></li><li><a href="module-utils.html">utils</a></li></ul><h3>Classes</h3><ul><li><a href="module-lib.Controller.html">Controller</a></li><li><a href="module-lib.Dal.html">Dal</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 20 2019 16:07:45 GMT-0300 (GMT-03:00)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 20 2019 19:20:40 GMT-0300 (GMT-03:00)
 </footer>
 
 <script> prettyPrint(); </script>

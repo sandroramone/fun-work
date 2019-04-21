@@ -1,3 +1,14 @@
+## Modules
+
+<dl>
+<dt><a href="#module_lib">lib</a></dt>
+<dd></dd>
+<dt><a href="#module_resources">resources</a></dt>
+<dd></dd>
+<dt><a href="#module_utils">utils</a></dt>
+<dd></dd>
+</dl>
+
 <a name="module_lib"></a>
 
 ## lib
@@ -22,6 +33,7 @@
         * [.update(query, body)](#module_lib.Dal+update) ⇒ <code>Object</code>
         * [.remove(query)](#module_lib.Dal+remove)
     * [.Factory(config, middlewares)](#module_lib.Factory)
+    * [.sanitizeQuery(req, res, next)](#module_lib.sanitizeQuery)
     * [.createRoute(controller, middlewares)](#module_lib.createRoute)
     * [.config](#module_lib.config) : <code>Object</code>
 
@@ -289,6 +301,20 @@ attached in destination path
 | config | <code>config</code> | 
 | middlewares | <code>Object</code> | 
 
+<a name="module_lib.sanitizeQuery"></a>
+
+### lib.sanitizeQuery(req, res, next)
+sanitizeQuery is a middleware function that parses items contained
+in the req.query to object
+
+**Kind**: static method of [<code>lib</code>](#module_lib)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| req | <code>Object</code> | is a request object |
+| res | <code>Object</code> | is response object |
+| next | <code>function</code> | is the function that calls the next middleware |
+
 <a name="module_lib.createRoute"></a>
 
 ### lib.createRoute(controller, middlewares)
@@ -325,6 +351,68 @@ const middleware = {
 | Name | Type | Description |
 | --- | --- | --- |
 | schema | <code>mongoose.Model</code> | is a instance of mongoose model |
-| [customController] | <code>controller</code> | is a |
-| [customDao] | <code>dao</code> |  |
+| [customController] | <code>controller</code> | is an instance of the controller |
+| [customDao] | <code>dao</code> | is an instance of the dao |
+
+<a name="module_resources"></a>
+
+## resources
+<a name="exp_module_resources--module.exports"></a>
+
+### module.exports ⏏
+This module export generated resources to routes
+
+**Kind**: Exported member  
+<a name="module_utils"></a>
+
+## utils
+
+* [utils](#module_utils)
+    * [.module.exports(error)](#module_utils.module.exports) ⇒ <code>Object</code>
+    * [.module.exports(str)](#module_utils.module.exports) ⇒ <code>produce</code>
+    * [.produce](#module_utils.produce) : <code>Object</code>
+
+<a name="module_utils.module.exports"></a>
+
+### utils.module.exports(error) ⇒ <code>Object</code>
+This function defaults to return errors
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| error | <code>Object</code> \| <code>Array.&lt;Object&gt;</code> | is a object or array of errors |
+
+**Example**  
+```js
+return {
+  errors: {
+     params: ['name'],
+        messages: [`name is necessary to register`]
+    }
+ }
+```
+<a name="module_utils.module.exports"></a>
+
+### utils.module.exports(str) ⇒ <code>produce</code>
+Check if it is possible to convert a string to an object,
+if it is possible convert and retake object as result and
+false error if it does not return error true and result null
+
+**Kind**: static method of [<code>utils</code>](#module_utils)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| str | <code>String</code> | string in json format to be converted to object |
+
+<a name="module_utils.produce"></a>
+
+### utils.produce : <code>Object</code>
+**Kind**: static typedef of [<code>utils</code>](#module_utils)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| error | <code>Boolean</code> | is true if it is not possible to convert the string object and false if it is conveyed |
+| result | <code>Object</code> | is a parser of string to object |
 

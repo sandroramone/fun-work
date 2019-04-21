@@ -1,3 +1,4 @@
+/** @module resources */
 const fs = require('fs')
 const { Router } = require('express')
 const router = new Router()
@@ -8,4 +9,5 @@ fs.readdirSync(__dirname).forEach(path => {
     }
 })
 
+/** This module export generated resources to routes */
 module.exports = router

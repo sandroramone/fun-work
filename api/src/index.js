@@ -22,7 +22,7 @@ app.use(expressValidator())
 
 app.use((req, res, next) => {
 
-    if (res.req.method === 'POST' || res.req.method === 'PUT' && res.statusCode >= 400) {
+    if (res.statusCode >= 400 && res.req.method === 'POST' || res.req.method === 'PUT') {
         const oldSend = res.send
 
         res.send = (data) => {

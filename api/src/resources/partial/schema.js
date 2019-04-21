@@ -18,7 +18,10 @@ const schema = new Schema({
     cpf: { type: String },
     birthdate: { type: Date },
     phone: { type: String }
-})
+}, { timestamps: {} })
 
-
+/**
+ * Proposal is a mongoose model
+ * @memberof module:resources/partial
+ */
 module.exports = model('piece', schema)
