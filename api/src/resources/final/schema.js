@@ -22,25 +22,6 @@ const schema = new Schema({
     phone: { type: String }
 }, { timestamps: {} })
 
-schema.pre('updateOne', async function () {
-    this._diff = Diff(this.isNew, this._doc)
-    console.log('entrou no else', this.diff)
-})
-
-schema.post('updateOne', async () => {
-
-})
-
-schema.methods.log = async data => {
-    data.diff = {
-        before: this._original,
-        after: this._diff
-    }
-
-    return await LogSchema.create(data)
-}
-
-console.log(...schema.s.hooks._posts)
 /**
  * Proposal is a mongoose model
  * @memberof module:resources/final
