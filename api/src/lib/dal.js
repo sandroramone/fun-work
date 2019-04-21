@@ -96,10 +96,23 @@ class Dal {
      * in the database using the schema
      * @returns {Object} - contains found items(n), updated items(nModified), and ok if all normal occurred
      */
-    update(query, body) {
-        return this.Schema
+    async update(query, body) {
+        const result = await this.Schema
             .updateOne(query, body)
             .exec()
+
+        // console.log('result', result, 'log', result.log, 'schema', this.Schema)
+        if (typeof result.log === 'function') {
+            const data = {
+                action: 'update',
+                category: this.Schema.modelName,
+                message: 'Updated data',
+            }
+
+            result.log(data)
+        }
+
+        return result
     }
 
     /**

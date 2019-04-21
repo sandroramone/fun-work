@@ -2,10 +2,13 @@ const express = require('express')
 const spdy = require('spdy')
 const bodyParser = require('body-parser')
 const expressValidator = require('express-validator')
+const resquestId = require('express-request-id')()
 const fs = require('fs')
 
 // eslint-disable-next-line no-unused-vars
 const mongoose = require('./database')
+const morgan = require('./log/morgan')
+const bunyan = require('./log/bunyan')
 const routes = require('./resources/routes')
 const { FormatError } = require('./utils')
 
@@ -16,23 +19,52 @@ const options = {
     cert: fs.readFileSync(__dirname + '/keys/server.crt')
 }
 
+app.use(resquestId)
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(expressValidator())
 
+app.use(morgan())
+app.use(morgan(false))
+app.use((req, res, next) => {
+    const log = bunyan.loggerInstace.child({
+        id: req.id,
+        body: req.body,
+    }, true)
+    log.info({ req })
+    next()
+})
+
+app.use((req, res, next) => {
+    const afterResponse = () => {
+        res.removeListener('finish', afterResponse)
+        res.removeListener('close', afterResponse)
+        const log = bunyan.loggerInstace.child({
+            id: req.id
+        }, true)
+        log.info({ res }, 'response')
+    }
+
+    res.on('finish', afterResponse)
+    res.on('close', afterResponse)
+    next()
+})
+
 app.use((req, res, next) => {
 
-    if (res.statusCode >= 400 && res.req.method === 'POST' || res.req.method === 'PUT') {
-        const oldSend = res.send
+    if (res.req.method === 'POST' || res.req.method === 'PUT') {
+        if (res.statusCode >= 400) {
+            const oldSend = res.send
 
-        res.send = (data) => {
+            res.send = (data) => {
 
-            data = JSON.parse(data)
+                data = JSON.parse(data)
 
-            data.errors = FormatError(data.errors)
+                data.errors = FormatError(data.errors)
 
-            res.send = oldSend
-            res.send(JSON.stringify(data))
+                res.send = oldSend
+                res.send(JSON.stringify(data))
+            }
         }
     }
 

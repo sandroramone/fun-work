@@ -15,10 +15,10 @@ const schema = new Schema({
     productId: { type: Number },
     name: { type: String },
     email: { type: String },
-    cpf: { type: String },
+    cpf: { type: String, index: true },
     birthdate: { type: Date },
     phone: { type: String }
-}, { timestamps: {} })
+}, { timestamps: {}, autoIndex: true })
 
 /**
  * Proposal is a mongoose model

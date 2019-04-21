@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: lib/middleware.find.js</title>
+    <title>JSDoc: Source: utils/diff.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: lib/middleware.find.js</h1>
+    <h1 class="page-title">Source: utils/diff.js</h1>
 
     
 
@@ -26,32 +26,17 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const { IsJsonString } = require('../utils')
+            <pre class="prettyprint source linenums"><code>const { isEqual, isObject, transform } = require('lodash')
 
 /**
- * sanitizeQuery is a middleware function that parses items contained
- * in the req.query to object
- * @memberof module:lib
- * @param {Object} req - is a request object
- * @param {Object} res - is response object
- * @param {Function} next - is the function that calls the next middleware
+ * processes diff between json files
+ * @memberof module:utils
  */
-const sanitizeQuery = (req, res, next) => {
-    const query = {}
-
-    for (const i in req.query) {
-        const { error, result } = IsJsonString(req.query[i])
-        if (error)
-            query[i] = req.query[i]
-        else
-            query[i] = result
-    }
-
-    req.query = query
-    next()
-}
-
-module.exports = sanitizeQuery
+exports.Diff = (current, previous) => transform(current, (res, val, key) => {
+    if (!isEqual(val, previous[key]))
+        res[key] = isObject(val) &amp;&amp; isObject(previous[key]) ?
+            this.Diff(val, previous[key]) : val
+})
 </code></pre>
         </article>
     </section>
