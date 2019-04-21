@@ -8,7 +8,7 @@
     "nab": "$(npm bin)/nab https://localhost:3000/api/final",
     "stress": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && $(npm bin)/nperf -c 5 -n 10000 https://localhost:3000/api/final",
     "postman": "$(npm bin)/newman run ./tests/postman/** --insecure",
-    "doc": "$(npm bin)/jsdoc src -r -c ./.jsdoc.json -R ./README.md -P ./package.json -d docs && $(npm bin)/jsdoc2md ./src/**/** > DOCUMENTATION.md",
+    "doc": "$(npm bin)/jsdoc src -r -c ./.jsdoc.json -R ./README.md -P ./package.json -d ../docs && $(npm bin)/jsdoc2md ./src/**/** > ../DOCUMENTATION.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sandro",
