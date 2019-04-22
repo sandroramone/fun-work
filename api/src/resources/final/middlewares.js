@@ -1,4 +1,5 @@
 const { body, validationResult } = require('express-validator/check')
+const Partial = require('../partial/schema')
 
 /**
  * Export resource final middlewares
@@ -69,6 +70,11 @@ module.exports = (model) => {
         return years_old >= 18 && years_old <= 65 ? true : false
     }
 
+    const validatorPhone = phone => {
+        const regex = /\+\d{2}\s\(\d{2}\)\s\d{4,5}-?\d{4}/g
+        return !!regex.exec(phone)
+    }
+
     const validadeItemsPost = () => [
         body('productId', 'productId doesn\'t exists or not a number')
             .exists().isNumeric().withMessage('productId must be a number'),
@@ -79,15 +85,17 @@ module.exports = (model) => {
 
         body('cpf', 'Invalid cpf')
             .exists()
-            .custom(value => validatorCPF(value.replace(/\D/g, '')))
-            .customSanitizer(sanitizecpf),
+            .customSanitizer(sanitizecpf)
+            .custom(validatorCPF),
 
         body('birthdate')
             .exists().withMessage('Birthdate is necessary')
             .custom(validatorBirthday)
             .withMessage('Invalid age, you must be between 18 and 65 years old'),
 
-        body('phone').exists().withMessage('Phone number is necessary')
+        body('phone')
+            .exists().withMessage('Phone number is necessary')
+            .custom(validatorPhone).withMessage('Phone number incorrect')
     ]
 
     const validation = (req, res, next) => {
@@ -103,11 +111,11 @@ module.exports = (model) => {
         const days = 60000 * 60 * 24 * 90
         const dateLimit = new Date(new Date().getTime() - days)
         const query = {
-            cpf: req.body.cpf,
+            cpf: req.body.cpf.replace(/\D/g, ''),
             createdAt: { $gte: dateLimit.toISOString() }
         }
 
-        const count = await model.countDocuments(query).exec()
+        const count = await model.count(query).exec()
 
         if (count > 0) {
             return res.status(400).json({
@@ -121,9 +129,15 @@ module.exports = (model) => {
         }
     }
 
+    const removePartial = async (req, res, next) => {
+        const { cpf } = req.body
+        await Partial.remove({ cpf }).exec()
+        next()
+    }
+
     return {
         find: [],
-        post: [validateOldProposal, validadeItemsPost(), validation],
+        post: [validateOldProposal, validadeItemsPost(), validation, removePartial],
         get: [],
         put: [],
         delete: []

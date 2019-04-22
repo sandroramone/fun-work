@@ -55,7 +55,6 @@ app.use((req, res, next) => {
     if (res.req.method === 'POST' || res.req.method === 'PUT') {
         if (res.statusCode >= 400) {
             const oldSend = res.send
-
             res.send = (data) => {
 
                 data = JSON.parse(data)
@@ -74,10 +73,13 @@ app.use((req, res, next) => {
 app.use('/api', routes)
 
 app.use((err, req, res, next) => {
-    let data = FormatError(err)
+    if (!err) {
+        let data = FormatError(err)
 
-    res.status(500).json(data)
-    next(err)
+        res.status(500).json(data)
+        next(err)
+    }
+    next()
 })
 
 spdy

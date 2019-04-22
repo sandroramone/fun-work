@@ -1,6 +1,7 @@
 /** @module resources/partial */
 const { Factory, Controller } = require('../../lib')
 const schema = require('./schema')
+const middlewares = require('./middleware')()
 
 class customController extends Controller {
     async create(req, res, next) {
@@ -17,22 +18,6 @@ class customController extends Controller {
     }
 }
 
-const mid = {
-    find: [],
-    post: [
-        (req, res, next) => {
-            if (req.body.token) {
-                req.body = { ...req.body, _id: req.body.token }
-                delete req.body.token
-            }
-            next()
-        }
-    ],
-    get: [],
-    put: [],
-    delete: []
-}
-
 const config = {
     schema,
     customController
@@ -41,4 +26,4 @@ const config = {
 /**
  * Export resource partial
  */
-module.exports = Factory(config, mid)
+module.exports = Factory(config, middlewares)

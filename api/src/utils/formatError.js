@@ -21,6 +21,16 @@ module.exports = (error) => {
             }
         }
     }
+
+    if (error.name === 'Error') {
+        return {
+            errors: {
+                params: [],
+                messages: [error.message]
+            }
+        }
+    }
+
     return {
         errors: {
             params: error.path ? [error.path] : [],

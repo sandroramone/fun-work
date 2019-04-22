@@ -368,14 +368,14 @@ This module export generated resources to routes
 ## utils
 
 * [utils](#module_utils)
-    * [.exports.Diff()](#module_utils.exports.Diff)
+    * [.Diff()](#module_utils.Diff)
     * [.module.exports(error)](#module_utils.module.exports) ⇒ <code>Object</code>
     * [.module.exports(str)](#module_utils.module.exports) ⇒ <code>produce</code>
     * [.produce](#module_utils.produce) : <code>Object</code>
 
-<a name="module_utils.exports.Diff"></a>
+<a name="module_utils.Diff"></a>
 
-### utils.exports.Diff()
+### utils.Diff()
 processes diff between json files
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  

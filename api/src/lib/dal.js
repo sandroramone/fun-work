@@ -98,10 +98,9 @@ class Dal {
      */
     async update(query, body) {
         const result = await this.Schema
-            .updateOne(query, body)
+            .findOneAndUpdate(query, body, { new: true })
             .exec()
 
-        // console.log('result', result, 'log', result.log, 'schema', this.Schema)
         if (typeof result.log === 'function') {
             const data = {
                 action: 'update',
@@ -109,7 +108,7 @@ class Dal {
                 message: 'Updated data',
             }
 
-            result.log(data)
+            await result.log(data)
         }
 
         return result

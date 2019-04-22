@@ -124,9 +124,9 @@ class Controller {
                 req.body
             )
 
-            if (result.n < 1) { return res.status(404).json(notFound) }
-            if (result.nModified < 1) { return res.sendStatus(304) }
-            res.sendStatus(204)
+            if (result == null) { return res.status(404).json(notFound) }
+
+            res.status(200).json(result)
         } catch (err) {
             next(err)
         }

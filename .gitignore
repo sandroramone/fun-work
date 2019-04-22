@@ -1,2 +1,4 @@
 /data
 /api/node_modules
+/api/.nyc_output
+/api/coverage
