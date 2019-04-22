@@ -305,4 +305,4 @@ StatusCode 204
 
 #
 
-documentation of code api is in the directory ./docs in format html and [here Markdown](https://github.com/sandroramone/work/blob/master/DOCUMENTATION.md).
+The api code documentation is in the ./docs directory in html format and [here Markdown](https://github.com/sandroramone/work/blob/master/DOCUMENTATION.md).
