@@ -4,6 +4,8 @@ A "work" api provides endpoints for record of proposals and records for proposal
 
 ## Documentation
 
+<a name="endpoints"></a>
+
 ### Endpoints
 
 #### final
@@ -63,6 +65,8 @@ result request example:
 
 ```
 
+[<code>back to endpoints</code>](#endpoints)
+
 #
 
 <a name="post_final"></a>
@@ -98,6 +102,8 @@ result request example:
 
 ```
 
+[<code>back to endpoints</code>](#endpoints)
+
 #
 
 <a name="get_final_id"></a>
@@ -122,6 +128,8 @@ result request example:
 }
 
 ```
+
+[<code>back to endpoints</code>](#endpoints)
 
 #
 
@@ -148,6 +156,8 @@ result request example:
 
 ```
 
+[<code>back to endpoints</code>](#endpoints)
+
 #
 
 <a name="delete_final_id"></a>
@@ -159,6 +169,8 @@ used to exclude a record from a proposal using the provided id
 result request No Content
 
 StatusCode 204
+
+[<code>back to endpoints</code>](#endpoints)
 
 #
 
@@ -199,6 +211,8 @@ result request example:
 
 ```
 
+[<code>back to endpoints</code>](#endpoints)
+
 #
 
 <a name="post_partial"></a>
@@ -228,6 +242,8 @@ result request example:
 
 ```
 
+[<code>back to endpoints</code>](#endpoints)
+
 #
 
 <a name="get_partial_id"></a>
@@ -247,6 +263,8 @@ result request example:
 }
 
 ```
+
+[<code>back to endpoints</code>](#endpoints)
 
 #
 
@@ -269,6 +287,8 @@ result request example:
 
 ```
 
+[<code>back to endpoints</code>](#endpoints)
+
 #
 
 <a name="delete_partial_id"></a>
@@ -280,6 +300,8 @@ used to exclude a record from a partial using the provided id
 result request No Content
 
 StatusCode 204
+
+[<code>back to endpoints</code>](#endpoints)
 
 #
 
