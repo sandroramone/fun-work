@@ -2,3 +2,4 @@
 /api/node_modules
 /api/.nyc_output
 /api/coverage
+/api/src/log/access.log

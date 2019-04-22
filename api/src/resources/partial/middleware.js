@@ -51,7 +51,7 @@ module.exports = () => {
 
     const validadeItemsPost = () => [
         body('cpf', 'Invalid cpf')
-            .exists()
+            .optional()
             .customSanitizer(sanitizecpf)
             .custom(validatorCPF),
     ]
