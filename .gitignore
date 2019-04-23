@@ -3,3 +3,4 @@
 /api/.nyc_output
 /api/coverage
 /api/src/log/access.log
+/api/package-lock.json

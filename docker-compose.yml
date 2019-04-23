@@ -7,8 +7,6 @@ services:
             - "27017:27017"
         volumes:
             - ./data:/data/db
-        logging:
-            driver: none
     api:
         image: node
         volumes:
