@@ -11,6 +11,7 @@ const morgan = require('./log/morgan')
 const bunyan = require('./log/bunyan')
 const routes = require('./resources/routes')
 const { FormatError } = require('./utils')
+const { Graphql } = require('./graphql')
 
 const app = express()
 
@@ -71,6 +72,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/api', routes)
+Graphql(app)
 
 app.use((err, req, res, next) => {
     if (!err) {

@@ -29,7 +29,7 @@ const Factory = (
     const dao = new customDao(schema)
     const controller = new customController(dao)
 
-    const route = Route(controller, middlewares)
+    const route = new Route(controller, dao, middlewares)
     return route
 }
 

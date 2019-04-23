@@ -44,5 +44,26 @@ const createRoute = (controller, middlewares = mid) => {
     return router
 }
 
+class Service {
 
-module.exports = createRoute
+    constructor(controller, dao, middlewares = mid) {
+        this.controller = controller
+        this.dao = dao
+        this.middlewares = middlewares
+        this.router = new Router()
+
+        this.router
+            .route('/')
+            .get(sanitizeQueryFind, ...middlewares.find, (...args) => controller.find(...args))
+            .post(...middlewares.post, (...args) => controller.create(...args))
+
+        this.router
+            .route('/:id')
+            .get(...middlewares.get, (...args) => controller.findById(...args))
+            .put(...middlewares.put, (...args) => controller.update(...args))
+            .delete(...middlewares.delete, (...args) => controller.remove(...args))
+    }
+
+}
+
+module.exports = Service

@@ -15,7 +15,7 @@
  * @param {String} str - string in json format to be converted to object
  * @returns {produce}
  */
-module.exports = (str) => {
+exports.IsJsonString = (str) => {
     let result = null
     try {
         result = JSON.parse(str)

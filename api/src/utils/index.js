@@ -1,4 +1,11 @@
 /** @module utils */
-exports.IsJsonString = require('./jsonstring')
-exports.FormatError = require('./formatError')
-exports.Diff = require('./diff').Diff
+module.exports = {
+    ...require('./jsonstring'),
+    ...require('./formatError'),
+    ...require('./diff'),
+    ...require('./cpf'),
+    ...require('./phone'),
+    ...require('./validate_old_proposal'),
+    ...require('./birthdate'),
+    ...require('./email')
+}

@@ -12,7 +12,7 @@
  *  }
  *
  */
-module.exports = (error) => {
+exports.FormatError = (error) => {
     if (Array.isArray(error)) {
         return {
             errors: {
