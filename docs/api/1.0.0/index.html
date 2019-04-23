@@ -42,6 +42,220 @@
 
 
 
+    <section>
+        <article><h1>Work Api</h1><p>A &quot;work&quot; api provides endpoints for record of proposals and records for proposals, are included and finalized for a record of their records.</p>
+<h2>Documentation</h2><p><a name="endpoints"></a></p>
+<h3>Endpoints</h3><h4>final</h4><dl>
+<dt><a href="#get_final">GET - /api/final</a></dt>
+<dt><a href="#post_final">POST - /api/final</a></dt>
+<dt><a href="#get_final_id">GET - /api/final/:id</a></dt>
+<dt><a href="#put_final_id">PUT - /api/final/:id</a></dt>
+<dt><a href="#delete_final_id">DELETE - /api/final/:id</a></dt>
+</dl>
+
+<h4>partial</h4><dl>
+<dt><a href="#get_partial">GET - /api/partial</a></dt>
+<dt><a href="#post_partial">GET - /api/partial</a></dt>
+<dt><a href="#get_partial_id">GET - /api/partial/:id</a></dt>
+<dt><a href="#put_partial_id">GET - /api/partial/:id</a></dt>
+<dt><a href="#delete_partial_id">GET - /api/partial/:id</a></dt>
+</dl>
+
+<p>#</p>
+<p><a name="get_final"></a></p>
+<blockquote>
+<p>GET - /api/final</p>
+</blockquote>
+<p>used to list all proposals</p>
+<p>additional parameters:</p>
+<pre class="prettyprint source"><code>- limit: type number
+- skip: type number</code></pre><p>default values:</p>
+<blockquote>
+<p>?limit=10&amp;skip=0</p>
+</blockquote>
+<p>result request example:</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;total&quot;: 1,
+    &quot;items&quot;: [
+        {
+            &quot;_id&quot;: &quot;5cbdcab9baeb2b361ba444eb&quot;,
+            &quot;productId&quot;: 1,
+            &quot;name&quot;: &quot;John Doe&quot;,
+            &quot;email&quot;: &quot;johndoe@email.com&quot;,
+            &quot;cpf&quot;: &quot;95049628075&quot;,
+            &quot;birthdate&quot;: &quot;1985-06-17T03:00:00.000Z&quot;,
+            &quot;phone&quot;: &quot;+55 (18) 3272-6365&quot;,
+            &quot;createdAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+            &quot;updatedAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+        }
+    ]
+}
+</code></pre><p><a href="#endpoints"><code>back to endpoints</code></a></p>
+<p>#</p>
+<p><a name="post_final"></a></p>
+<blockquote>
+<p>POST - /api/final</p>
+</blockquote>
+<p>used to register a proposal</p>
+<p>body resquest:</p>
+<pre class="prettyprint source"><code>all parameter is required
+- productId: type number
+- name: type string,
+- email: type string,
+- cpf: type string,
+- birthdate: type date or string,
+- phone: type string format &quot;+99 (99) 9999-9999&quot; or &quot;+99 (99) 99999-9999&quot;</code></pre><p>result request example:</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;_id&quot;: &quot;5cbdcab9baeb2b361ba444eb&quot;,
+    &quot;productId&quot;: 1,
+    &quot;name&quot;: &quot;John Doe&quot;,
+    &quot;email&quot;: &quot;johndoe@email.com&quot;,
+    &quot;cpf&quot;: &quot;95049628075&quot;,
+    &quot;birthdate&quot;: &quot;1985-06-17T03:00:00.000Z&quot;,
+    &quot;phone&quot;: &quot;+55 (18) 3272-6365&quot;,
+    &quot;createdAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+    &quot;updatedAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+}
+</code></pre><p><a href="#endpoints"><code>back to endpoints</code></a></p>
+<p>#</p>
+<p><a name="get_final_id"></a></p>
+<blockquote>
+<p>GET - /api/final/:id</p>
+</blockquote>
+<p>used to obtain a record through the given id</p>
+<p>result request example:</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;_id&quot;: &quot;5cbdcab9baeb2b361ba444eb&quot;,
+    &quot;productId&quot;: 1,
+    &quot;name&quot;: &quot;John Doe&quot;,
+    &quot;email&quot;: &quot;johndoe@email.com&quot;,
+    &quot;cpf&quot;: &quot;95049628075&quot;,
+    &quot;birthdate&quot;: &quot;1985-06-17T03:00:00.000Z&quot;,
+    &quot;phone&quot;: &quot;+55 (18) 3272-6365&quot;,
+    &quot;createdAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+    &quot;updatedAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+}
+</code></pre><p><a href="#endpoints"><code>back to endpoints</code></a></p>
+<p>#</p>
+<p><a name="put_final_id"></a></p>
+<blockquote>
+<p>PUT - /api/final/:id</p>
+</blockquote>
+<p>used to update a record of a proposal using the provided id</p>
+<p>result request example:</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;_id&quot;: &quot;5cbdcab9baeb2b361ba444eb&quot;,
+    &quot;productId&quot;: 1,
+    &quot;name&quot;: &quot;John Doe&quot;,
+    &quot;email&quot;: &quot;johndoe@email.com&quot;,
+    &quot;cpf&quot;: &quot;95049628075&quot;,
+    &quot;birthdate&quot;: &quot;1985-06-17T03:00:00.000Z&quot;,
+    &quot;phone&quot;: &quot;+55 (18) 3272-6365&quot;,
+    &quot;createdAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+    &quot;updatedAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+}
+</code></pre><p><a href="#endpoints"><code>back to endpoints</code></a></p>
+<p>#</p>
+<p><a name="delete_final_id"></a></p>
+<blockquote>
+<p>DELETE - /api/final/:id</p>
+</blockquote>
+<p>used to exclude a record from a proposal using the provided id</p>
+<p>result request No Content</p>
+<p>StatusCode 204</p>
+<p><a href="#endpoints"><code>back to endpoints</code></a></p>
+<p>#</p>
+<p><a name="get_partial"></a></p>
+<blockquote>
+<p>GET - /api/partial</p>
+</blockquote>
+<p>used to list all partial of proposals</p>
+<p>additional parameters:</p>
+<pre class="prettyprint source"><code>- limit: type = number
+- skip: type = number</code></pre><p>default values:</p>
+<blockquote>
+<p>?limit=10&amp;skip=0</p>
+</blockquote>
+<p>result request example:</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;total&quot;: 1,
+    &quot;items&quot;: [
+        {
+            &quot;_id&quot;: &quot;5cbdcab9baeb2b361ba444eb&quot;,
+            &quot;productId&quot;: 1,
+            &quot;name&quot;: &quot;John Doe&quot;,
+            &quot;email&quot;: &quot;johndoe@email.com&quot;,
+            &quot;cpf&quot;: &quot;95049628075&quot;,
+            &quot;birthdate&quot;: &quot;1985-06-17T03:00:00.000Z&quot;,
+            &quot;phone&quot;: &quot;+55 (18) 3272-6365&quot;,
+            &quot;createdAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+            &quot;updatedAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+        }
+    ]
+}
+</code></pre><p><a href="#endpoints"><code>back to endpoints</code></a></p>
+<p>#</p>
+<p><a name="post_partial"></a></p>
+<blockquote>
+<p>POST - /api/partial</p>
+</blockquote>
+<p>used to register a partial, after the first request is returned a token that can be used in the next resquest to update that record, the endpoint post will redirect to the PUT and overwrite the data</p>
+<p>body resquest:</p>
+<pre class="prettyprint source"><code>all parameters are not required, they will be provided in a partial way
+
+- productId: type number
+- name: type string,
+- email: type string,
+- cpf: type string,
+- birthdate: type date or string,
+- phone: type string</code></pre><p>result request example:</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;token&quot;: &quot;5cbdcab9baeb2b361ba444eb&quot;,
+    &quot;cpf&quot;: &quot;95049628075&quot;,
+}
+</code></pre><p><a href="#endpoints"><code>back to endpoints</code></a></p>
+<p>#</p>
+<p><a name="get_partial_id"></a></p>
+<blockquote>
+<p>GET - /api/partial/:id</p>
+</blockquote>
+<p>used to obtain a record through the given id</p>
+<p>result request example:</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;_id&quot;: &quot;5cbdcab9baeb2b361ba444eb&quot;,
+    &quot;cpf&quot;: &quot;95049628075&quot;,
+    &quot;createdAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+    &quot;updatedAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+}
+</code></pre><p><a href="#endpoints"><code>back to endpoints</code></a></p>
+<p>#</p>
+<p><a name="put_partial_id"></a></p>
+<blockquote>
+<p>PUT - /api/partial/:id</p>
+</blockquote>
+<p>used to update a record of a partial using the provided id</p>
+<p>result request example:</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;_id&quot;: &quot;5cbdcab9baeb2b361ba444eb&quot;,
+    &quot;name&quot;: &quot;John Doe&quot;,
+    &quot;cpf&quot;: &quot;95049628075&quot;,
+    &quot;createdAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+    &quot;updatedAt&quot;: &quot;2019-04-22T14:07:53.671Z&quot;,
+}
+</code></pre><p><a href="#endpoints"><code>back to endpoints</code></a></p>
+<p>#</p>
+<p><a name="delete_partial_id"></a></p>
+<blockquote>
+<p>DELETE - /api/partial/:id</p>
+</blockquote>
+<p>used to exclude a record from a partial using the provided id</p>
+<p>result request No Content</p>
+<p>StatusCode 204</p>
+<p><a href="#endpoints"><code>back to endpoints</code></a></p>
+<p>#</p>
+<p>The api code documentation is in the ./docs directory in html format and <a href="https://github.com/sandroramone/work/blob/master/DOCUMENTATION.md">here in Markdown</a>.</p></article>
+    </section>
+
 
 
 
@@ -56,7 +270,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 22 2019 10:33:00 GMT-0300 (GMT-03:00)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Apr 23 2019 09:53:09 GMT-0300 (GMT-03:00)
 </footer>
 
 <script> prettyPrint(); </script>

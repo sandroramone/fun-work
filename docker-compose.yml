@@ -7,14 +7,19 @@ services:
             - "27017:27017"
         volumes:
             - ./data:/data/db
+        logging:
+            driver: none
     api:
         image: node
         volumes:
-            - ./api:/opt/api
+            - ./api:/usr/src/app
         ports:
             - "3000:3000"
         environment:
-            - MONGO_DB_URI=mongodb://mongo:27017/
+            - PM2_PUBLIC_KEY=55zml9n2va0yynk
+            - PM2_SECRET_KEY=vetni0bqzbsbern
+            - MONGO_DB_URI=mongodb://mongo:27017/work
         depends_on:
             - mongo
+        command: bash -c "cd /usr/src/app && npm i && npm run start"
 

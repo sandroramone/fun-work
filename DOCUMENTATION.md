@@ -369,8 +369,8 @@ This module export generated resources to routes
 
 * [utils](#module_utils)
     * [.Diff()](#module_utils.Diff)
-    * [.module.exports(error)](#module_utils.module.exports) ⇒ <code>Object</code>
-    * [.module.exports(str)](#module_utils.module.exports) ⇒ <code>produce</code>
+    * [.exports.FormatError(error)](#module_utils.exports.FormatError) ⇒ <code>Object</code>
+    * [.exports.IsJsonString(str)](#module_utils.exports.IsJsonString) ⇒ <code>produce</code>
     * [.produce](#module_utils.produce) : <code>Object</code>
 
 <a name="module_utils.Diff"></a>
@@ -379,9 +379,9 @@ This module export generated resources to routes
 processes diff between json files
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
-<a name="module_utils.module.exports"></a>
+<a name="module_utils.exports.FormatError"></a>
 
-### utils.module.exports(error) ⇒ <code>Object</code>
+### utils.exports.FormatError(error) ⇒ <code>Object</code>
 This function defaults to return errors
 
 **Kind**: static method of [<code>utils</code>](#module_utils)  
@@ -399,9 +399,9 @@ return {
     }
  }
 ```
-<a name="module_utils.module.exports"></a>
+<a name="module_utils.exports.IsJsonString"></a>
 
-### utils.module.exports(str) ⇒ <code>produce</code>
+### utils.exports.IsJsonString(str) ⇒ <code>produce</code>
 Check if it is possible to convert a string to an object,
 if it is possible convert and retake object as result and
 false error if it does not return error true and result null

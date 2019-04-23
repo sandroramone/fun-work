@@ -1,8 +1,8 @@
 const { UserInputError } = require('apollo-server-express')
 const { ProcessArgsToQuery } = require('../../process_args')
+const { ProcessArgsToBody } = require('../../process_body')
 const Service = require('../../../resources/final')
 const ServicePartial = require('../../../resources/partial')
-const { ProcessArgsToBody } = require('../../process_body')
 
 module.exports = () => ({
     Query: {
