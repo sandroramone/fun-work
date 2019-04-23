@@ -4,9 +4,38 @@ A "work" api provides endpoints for record of proposals and records for proposal
 
 ## Documentation
 
+This project uses docker-compose to be able to facilitate the development, to run the project just have installed the doker and docker-compose.
+
+With docker-compose and docker installed use the following commands to run the project:
+
+```console
+[user@machine:~]$ docker-compose up
+
+# If superuser access is required use
+
+[user@machine:~]$ sudo docker-compose up
+
+```
+
+The system displays logs of access and requests in the console and stores in files also, the log file is located in the directory /api/src/log/access.log, already for changes in the proposals the system stores the information referring to the operation directly in the MongoDb in collection log.
+
+
+![MongoDBLog](./images/mongodb.png)
+
+
+Pm2 is also used to initialize and manage the process, it is configured to start 4 instances
+
+![Pm2Manager](./images/pm2.png)
+
+
 <a name="endpoints"></a>
 
 ### Endpoints
+
+#### graphql
+<dl>
+<dt><a href="#graphql">Graphql - /v1/graphql</dt>
+</dl>
 
 #### final
 <dl>
@@ -25,6 +54,74 @@ A "work" api provides endpoints for record of proposals and records for proposal
 <dt><a href="#put_partial_id">GET - /api/partial/:id</a></dt>
 <dt><a href="#delete_partial_id">GET - /api/partial/:id</a></dt>
 </dl>
+
+#
+
+<a name="graphql"></a>
+
+> Graphql - /v1/graphql
+
+Endpoint using graphql, follows the same rules of registers as the Rest calls, same required fields
+
+Exemple of use:
+
+```graphql
+# get a proposal using id
+query getProposal($id: String!){
+  proposal(id: $id) {
+    _id
+    productId
+    name
+    email
+    cpf
+    birthdate
+  }
+}
+
+
+# returns all bids that match the filters provided
+query getAllProposals($name: String){
+  proposals(name: $name) {
+    total
+    items{
+      _id
+      name
+      cpf
+      email
+      phone
+      productId
+      birthdate
+      createdAt
+      updatedAt
+    }
+  }
+}
+
+
+# store a proposal, all parameters are required
+mutation saveProposal{
+  saveProposal(
+    productId: 1
+    name: "Jhon Doe"
+    email: "jhondoe@email.com"
+    cpf: "774.154.510-82"
+    birthdate: "02/12/1988"
+    phone: "+55 (18) 33272-9856"
+  ) {
+    _id
+    productId
+    name
+    email
+    cpf
+    birthdate
+    phone
+    createdAt
+    updatedAt
+  }
+}
+```
+
+this is the basic operation, more details on available parameters by accessing /v1/graphql
 
 #
 
