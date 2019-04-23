@@ -25,8 +25,6 @@ module.exports = () => ({
         saveProposal: async (root, args) => {
             const { body, errors } = await ProcessArgsToBody(args, Service.dao)
 
-            console.log('error lenght =%s', errors.length)
-
             if (errors.length > 0) {
                 throw new UserInputError('Invalid argumetns', errors)
             }
@@ -36,7 +34,8 @@ module.exports = () => ({
             try {
                 return await Service.dao.create(body)
             } catch (error) {
-                console.log(error)
+                // eslint-disable-next-line no-console
+                console.error(error)
                 return error
             }
         }

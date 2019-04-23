@@ -27,7 +27,6 @@ exports.CreatedAt = (args, query) => {
         }
 
         const { start, end } = between_date(args.createdAt)
-        console.log('start: %s end: %s', start, end)
 
         if (start)
             query['$and'].push({ createdAt: { $gte: start } })

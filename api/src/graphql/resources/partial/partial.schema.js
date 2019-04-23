@@ -18,6 +18,18 @@ const types = gql`
         total: Int
         items: [Partial]
     }
+
+    type ResultPartial {
+        token: String
+        productId: Int,
+        name: String
+        email: String
+        cpf: String
+        birthdate: String
+        phone: String
+        createdAt: String
+        updatedAt: String
+    }
 `
 
 const queries = `
@@ -38,7 +50,17 @@ partials(
     ) : Partials
 `
 
-const mutations = ''
+const mutations = `
+    savePartial(
+        token: String
+        productId: Int
+        name: String
+        email: String
+        cpf: String
+        birthdate: String
+        phone: String
+    ) : ResultPartial
+`
 
 module.exports = {
     mutations,
